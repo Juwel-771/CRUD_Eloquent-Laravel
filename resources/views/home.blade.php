@@ -53,8 +53,8 @@
                                 <td>{{$stu->city}}</td>
                                 <td>{{$stu->marks}}</td>
                                 <td>
-                                    <a href="" class="btn btn-info btn-sm">Edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="{{url('/edit',$stu->id)}}" class="btn btn-info btn-sm">Edit</a>
+                                    <a href="{{url('/destroy',$stu->id)}}" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

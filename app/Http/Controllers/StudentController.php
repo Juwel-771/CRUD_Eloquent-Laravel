@@ -76,9 +76,18 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     {
-        //
+        $student=Student::find($id);
+
+        $student->name = $req->name;
+        $student->city = $req->city;
+        $student->marks = $req->marks;
+        
+        $student->save();
+
+        return redirect(route('index'))->with('message','Data Updated');
+
     }
 
     /**
@@ -89,6 +98,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::destroy($id);
+        return redirect(route('index'))->with('message','Data Deleted');
     }
 }
