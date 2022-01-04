@@ -14,7 +14,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::all();
+        return view('home',['student'=>$students]);
     }
 
     /**
@@ -30,6 +31,8 @@ class StudentController extends Controller
         $student->marks = $req->marks;
         
         $student->save();
+
+        return redirect(route('index'))->with('message','Data Submitted');
     }
 
     /**
@@ -62,7 +65,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        return view('editform',['student'=>$student]);
     }
 
     /**
